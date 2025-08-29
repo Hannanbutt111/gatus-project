@@ -13,3 +13,7 @@ variable "private_subnets" {
 variable "alb_target_arn" {
   type = string
 }
+
+variable "ecr_image_url" {
+  type = string
+}

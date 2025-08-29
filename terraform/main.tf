@@ -14,7 +14,9 @@ module "ecs" {
   alb_sg          = module.alb.alb_sg_id
   private_subnets = module.vpc.private_subnet_ids
   alb_target_arn  = module.alb.alb_target_arn
+  ecr_image_url   = module.ecr.repository_url
 }
+
 module "ecr" {
   source          = "./modules/ecr"
   repository_name = "gatus-repo"

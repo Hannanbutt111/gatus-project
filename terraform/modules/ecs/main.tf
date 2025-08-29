@@ -13,7 +13,7 @@ resource "aws_ecs_task_definition" "memos_task" {
   container_definitions = jsonencode([
     {
       name      = "memos-container"
-      image     = "neosmemo/memos:latest"
+      image     = var.ecr_image_url
       essential = true
       portMappings = [
         {
@@ -52,10 +52,10 @@ resource "aws_security_group" "ecs_service_sg" {
   name   = "ecs-service-sg"
 
   ingress {
-    from_port   = 5230
-    to_port     = 5230
-    protocol    = "tcp"
-    security_groups = [var.alb_sg]
+    from_port        = 5230
+    to_port          = 5230
+    protocol         = "tcp"
+    security_groups  = [var.alb_sg]
   }
 
   egress {
