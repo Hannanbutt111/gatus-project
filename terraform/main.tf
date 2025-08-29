@@ -15,3 +15,14 @@ module "ecs" {
   private_subnets = module.vpc.private_subnet_ids
   alb_target_arn  = module.alb.alb_target_arn
 }
+module "ecr" {
+  source          = "./modules/ecr"
+  repository_name = "gatus-repo"
+  tags = {
+    Name = "gatus-repo"
+  }
+}
+
+output "ecr_url" {
+  value = module.app_ecr.repository_url
+}
