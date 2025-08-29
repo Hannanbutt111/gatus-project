@@ -26,5 +26,5 @@ module "ecr" {
 }
 
 output "ecr_url" {
-  value = module.app_ecr.repository_url
+  value = module.ecr.repository_url
 }
